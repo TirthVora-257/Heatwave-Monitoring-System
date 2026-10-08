@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Sources &amp; Stakeholders</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Task: CSS Box Model Card Styling -->
+    <style>
+        .cards-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        /* Book Card Box Model */
+        .book-card {
+            display: inline-block;
+            width: 250px;
+            margin: 12px;
+            padding: 20px;
+            border: 2px solid brown;
+            border-radius: 8px;
+            background-color: #E3EFE6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .book-card h3 {
+            margin-top: 0;
+            color: brown;
+            font-size: 18px;
+        }
+
+        .book-card p {
+            font-size: 14px;
+            color: #444444;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Data Sources &amp; Stakeholder Roles</h1>
+        <p>Telemetry Feeds, Operational Workflow &amp; Technical Glossary</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about-systems.html">About</a> | 
+        <a href="alert-details.html">Severe Warning</a> | 
+        <a href="hotspot-map.html">Hotspot Map</a> | 
+        <a href="sources.html">Data &amp; Roles</a> | 
+        <a href="forecast.html">Forecast</a> | 
+        <a href="media.html">Media &amp; Awareness</a> |
+        <a href="subscribe.html">Subscribe</a> | 
+        <a href="navigation.html">Directory</a>
+    </nav>
+
+    <br>
+
+    <!-- Main Content -->
+    <table width="90%" align="center" border="0" cellpadding="0" cellspacing="15">
+        
+        <!-- Book Card Layout Section -->
+        <tr>
+            <td>
+                <div class="cards-container">
+                    <div class="book-card">
+                        <h3>AWS Sensor Manual</h3>
+                        <p>Surface telemetry handbook covering continuous ground temperature and humidity tracking.</p>
+                        <a href="#"><b>View Reference &rarr;</b></a>
+                    </div>
+
+                    <div class="book-card">
+                        <h3>IMD Climate Guide</h3>
+                        <p>Official dataset documentation for regional forecast models and historical heat archives.</p>
+                        <a href="#"><b>View Reference &rarr;</b></a>
+                    </div>
+
+                    <div class="book-card">
+                        <h3>Satellite Data Index</h3>
+                        <p>Geostationary thermal infrared imaging records for monitoring urban heat island effects.</p>
+                        <a href="#"><b>View Reference &rarr;</b></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="card">
+                    <h2>Forecast &amp; Alert Workflow Steps</h2>
+                    <ol>
+                        <li><strong>Data Ingestion:</strong> Continuous telemetry collection from ground stations and satellite networks.</li>
+                        <li><strong>Threshold Analysis:</strong> Automated evaluation against predefined ambient temperature limits.</li>
+                        <li><strong>Alert Generation:</strong> Immediate categorization into standard or severe heatwave alert levels.</li>
+                        <li><strong>Broadcast &amp; Distribution:</strong> Real-time dispatch to emergency response units and public channels.</li>
+                    </ol>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="card">
+                    <h2>Stakeholders &amp; Operational Actions</h2>
+                    <ul>
+                        <li><strong>Disaster Management Authorities</strong>
+                            <ul>
+                                <li>Deploy mobile water distribution tankers to critical zones.</li>
+                                <li>Issue public cooling center operational orders.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Healthcare Infrastructure</strong>
+                            <ul>
+                                <li>Prepare emergency heatstroke isolation wards.</li>
+                                <li>Stock essential intravenous fluids and oral rehydration supplies.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Public Media &amp; Broadcast Networks</strong>
+                            <ul>
+                                <li>Interrupt regular programming with urgent heat warning banners.</li>
+                                <li>Publish daily advisory precautions for vulnerable demographics.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="card">
+                    <h2>Technical Abbreviations Glossary</h2>
+                    <dl>
+                        <dt><b>AWS</b></dt>
+                        <dd><i>Automatic Weather Station</i> — Automated surface telemetry units providing real-time local observations.</dd>
+                        <br>
+                        <dt><b>IMD</b></dt>
+                        <dd><i>India Meteorological Department</i> — The principal government agency responsible for meteorological observations and forecasting.</dd>
+                        <br>
+                        <dt><b>HW</b></dt>
+                        <dd><i>Heatwave</i> — A period of abnormally hot weather exceeding location-specific threshold temperatures.</dd>
+                        <br>
+                        <dt><b>SHW</b></dt>
+                        <dd><i>Severe Heatwave</i> — An extreme climate event marked by dangerous temperature spikes significantly above normal limits.</dd>
+                    </dl>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <hr color="brown" size="1">
+
+    <!-- Common Footer -->
+    <footer>
+        Heatwave Intelligence System | Summer 2026
+    </footer>
+
+</body>
+</html>

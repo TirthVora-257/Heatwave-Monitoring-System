@@ -1,0 +1,73 @@
+/* Page Background & Font */
+body {
+    background-color: #BEE2CD;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+/* Header Style */
+header {
+    background-color: #D5EAD8;
+    border: 2px solid brown;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Common Headings */
+h1, h2, h3, h4 {
+    color: brown;
+    margin: 5px 0;
+}
+
+/* Common Links & Hover */
+a {
+    color: brown;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #D5EAD8;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid brown;
+    border-bottom: 1px solid brown;
+}
+
+nav a {
+    margin: 0 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: darkred;
+}
+
+/* Content Cards / Tables */
+.card {
+    background-color: #E3EFE6;
+    padding: 15px;
+    border: 1px solid #c0d8c8;
+}
+
+.alert-card {
+    background-color: #FDEDEC;
+    padding: 15px;
+    border: 1px solid #f5c6cb;
+}
+
+/* Common Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    color: #555555;
+    font-style: italic;
+}

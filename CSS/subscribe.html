@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe - Heatwave Intelligence System</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* 1. Fieldset and Legend Styling */
+        fieldset {
+            border: 2px solid #5C3D2E;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #5C3D2E;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+
+        /* 2. Form Inputs & Dropdown Styling */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 95%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        /* 3. Input Focus State */
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            border-color: #5C3D2E;
+            box-shadow: 0 0 5px rgba(92, 61, 46, 0.4);
+            background-color: #fafafa;
+        }
+
+        /* 4. Form Action Buttons */
+        .btn-submit {
+            background-color: #5C3D2E;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-reset {
+            background-color: #888888;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        /* 5. Button Hover Effects */
+        .btn-submit:hover {
+            background-color: darkred;
+        }
+
+        .btn-reset:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Heatwave Advisory Subscription</h1>
+        <p>Register to Receive Real-time Early Warnings &amp; Advisories</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about-systems.html">About</a> | 
+        <a href="alert-details.html">Severe Warning</a> | 
+        <a href="hotspot-map.html">Hotspot Map</a> | 
+        <a href="sources.html">Data &amp; Roles</a> | 
+        <a href="forecast.html">Forecast</a> | 
+        <a href="media.html">Media &amp; Awareness</a> |
+        <a href="subscribe.html">Subscribe</a> | 
+        <a href="navigation.html">Directory</a>
+    </nav>
+
+    <br>
+
+    <!-- Main Content -->
+    <table width="80%" align="center" border="0" cellpadding="0" cellspacing="10">
+        <tr>
+            <td>
+                <div class="card">
+                    <h2>Citizen Alert Registration Form</h2>
+                    <p>Complete your details below to receive automated early warnings and advisories:</p>
+
+                    <form action="#" method="post">
+                    
+                        <!-- Contact Information -->
+                        <fieldset>
+                            <legend>Contact Information</legend>
+                            
+                            <label for="fullname">Full Name:</label><br>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                            <br>
+
+                            <label for="email">Email Address:</label><br>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                            <br>
+
+                            <label for="mobile">Mobile Number:</label><br>
+                            <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" required>
+                        </fieldset>
+
+                        <!-- Alert Preferences -->
+                        <fieldset>
+                            <legend>Alert Preferences</legend>
+
+                            <label for="region">Select Your Region:</label><br>
+                            <select id="region" name="region" required>
+                                <option value="">-- Choose Region --</option>
+                                <option value="north">North Zone (Delhi, Punjab, Haryana)</option>
+                                <option value="central">Central Zone (Maharashtra, MP)</option>
+                                <option value="south">South Zone (Telangana, AP, Karnataka)</option>
+                                <option value="east">East Zone (West Bengal, Odisha)</option>
+                                <option value="west">West Zone (Rajasthan, Gujarat)</option>
+                            </select>
+                            <br><br>
+
+                            <label>Preferred Alert Language:</label><br>
+                            <input type="radio" id="lang-en" name="language" value="english" checked>
+                            <label for="lang-en">English</label>&nbsp;&nbsp;
+
+                            <input type="radio" id="lang-hi" name="language" value="hindi">
+                            <label for="lang-hi">Hindi</label>&nbsp;&nbsp;
+
+                            <input type="radio" id="lang-reg" name="language" value="regional">
+                            <label for="lang-reg">Regional Vernacular</label>
+                            <br><br>
+
+                            <label>Alert Channels to Receive:</label><br>
+                            <input type="checkbox" id="alert-sms" name="alerts[]" value="sms" checked>
+                            <label for="alert-sms">SMS Notifications</label><br>
+
+                            <input type="checkbox" id="alert-email" name="alerts[]" value="email" checked>
+                            <label for="alert-email">Email Advisory Bulletins</label><br>
+
+                            <input type="checkbox" id="alert-whatsapp" name="alerts[]" value="whatsapp">
+                            <label for="alert-whatsapp">WhatsApp Urgent Warning Broadcasts</label><br>
+
+                            <input type="checkbox" id="alert-ivr" name="alerts[]" value="ivrs">
+                            <label for="alert-ivr">Automated Voice Emergency Calls</label>
+                        </fieldset>
+
+                        <table width="100%" border="0">
+                            <tr>
+                                <td align="center">
+                                    <input type="submit" value="Subscribe to Alerts" class="btn-submit">
+                                    &nbsp;&nbsp;
+                                    <input type="reset" value="Reset Form" class="btn-reset">
+                                </td>
+                            </tr>
+                        </table>
+
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <hr color="brown" size="1">
+
+    <!-- Common Footer -->
+    <footer>
+        Heatwave Intelligence System | Citizen Portal
+    </footer>
+
+</body>
+</html>

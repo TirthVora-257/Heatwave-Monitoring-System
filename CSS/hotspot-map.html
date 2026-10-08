@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotspot Map - Heatwave Intelligence System</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Image Gallery Grid Styling -->
+    <style>
+        /* 1. Grid Container with Spacing */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* 2. Gallery Item Wrapper */
+        .gallery-item {
+            background-color: #ffffff;
+            border: 2px solid brown;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            width: 260px;
+        }
+
+        /* 3. Uniform Image Size, Border & Smooth Transition */
+        .gallery-item img {
+            width: 240px;
+            height: 180px;
+            object-fit: cover;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* 4. Hover Zoom Effect */
+        .gallery-item img:hover {
+            transform: scale(1.08);
+            border-color: brown;
+            cursor: pointer;
+        }
+
+        .gallery-item p {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Regional Heatwave Hotspot Map</h1>
+        <p>Real-Time Geographical Hotspot &amp; Thermal Impact Zones</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about-systems.html">About</a> | 
+        <a href="alert-details.html">Severe Warning</a> | 
+        <a href="hotspot-map.html">Hotspot Map</a> | 
+        <a href="sources.html">Data &amp; Roles</a> | 
+        <a href="forecast.html">Forecast</a> | 
+        <a href="media.html">Media &amp; Awareness</a> |
+        <a href="subscribe.html">Subscribe</a> | 
+        <a href="navigation.html">Directory</a>
+    </nav>
+
+    <br>
+
+    <!-- Main Content -->
+    <table width="90%" align="center" border="0" cellpadding="0" cellspacing="15">
+        <tr>
+            <td align="center">
+                <div class="card">
+                    <h2>Regional Impact Zone Gallery</h2>
+                    <p>Select a region below to inspect high-resolution thermal imaging feeds:</p>
+
+                    <!-- Image Gallery Grid -->
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <img src="northwestindia.png" alt="North-West Thermal Zone">
+                            <p>North-Western Impact Zone</p>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="centralindia.png" alt="Central Plateau Hotspot">
+                            <p>Central Plateau Corridor</p>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="eastindia.png" alt="Eastern Belt Heat Anomaly">
+                            <p>Eastern Coastal Belt</p>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <hr color="brown" size="1">
+
+    <!-- Common Footer -->
+    <footer>
+        Heatwave Intelligence System | Hotspot Directory
+    </footer>
+
+</body>
+</html>

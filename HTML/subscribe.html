@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe - Heatwave Intelligence System</title>
+</head>
+<body bgcolor="#BEE2CD">
+
+    <table width="100%" border="0" cellpadding="10">
+        <tr>
+
+            <td align="left" valign="middle" width="20%">
+                <img id="company-logo" src="img1.png" alt="Company Logo" width="150" height="50">
+            </td>
+
+            <td align="center" valign="middle" width="60%">
+                <font color="brown" size="6">
+                    <b id="main-title">Heatwave Advisory Subscription</b>
+                </font>
+            </td>
+
+            <td align="right" valign="middle" width="20%">
+                <font color="brown" size="4">
+                    <b id="season-tag">Summer 2026</b>
+                </font>
+            </td>
+        </tr>
+    </table>
+
+    <hr color="brown" size="2">
+    <br>
+
+    <table width="80%" align="center" border="0" cellpadding="0" cellspacing="10">
+        <tr>
+            <td>
+                <table bgcolor="#D5EAD8" width="100%" cellpadding="20" border="0">
+                    <tr>
+                        <td>
+                            <font color="brown"><h2>Citizen Alert Registration Form</h2></font>
+                            <p>Complete your details below to receive automated early warnings and advisories:</p>
+
+                            <form action="#" method="post">
+                            
+                                <fieldset>
+                                    <legend><b>Contact Information</b></legend>
+                                    <br>
+                                    <label for="fullname">Full Name:</label><br>
+                                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required size="40">
+                                    <br><br>
+
+                                    <label for="email">Email Address:</label><br>
+                                    <input type="email" id="email" name="email" placeholder="example@domain.com" required size="40">
+                                    <br><br>
+
+                                    <label for="mobile">Mobile Number:</label><br>
+                                    <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" required size="40">
+                                    <br><br>
+                                </fieldset>
+
+                                <br>
+
+                                <fieldset>
+                                    <legend><b>Alert Preferences</b></legend>
+                                    <br>
+
+                                    <label for="region">Select Your Region:</label><br>
+                                    <select id="region" name="region" required>
+                                        <option value="">-- Choose Region --</option>
+                                        <option value="north">North Zone (Delhi, Punjab, Haryana)</option>
+                                        <option value="central">Central Zone (Maharashtra, MP)</option>
+                                        <option value="south">South Zone (Telangana, AP, Karnataka)</option>
+                                        <option value="east">East Zone (West Bengal, Odisha)</option>
+                                        <option value="west">West Zone (Rajasthan, Gujarat)</option>
+                                    </select>
+                                    <br><br>
+
+                                    <label>Preferred Alert Language:</label><br>
+                                    <input type="radio" id="lang-en" name="language" value="english" checked>
+                                    <label for="lang-en">English</label>&nbsp;&nbsp;
+
+                                    <input type="radio" id="lang-hi" name="language" value="hindi">
+                                    <label for="lang-hi">Hindi</label>&nbsp;&nbsp;
+
+                                    <input type="radio" id="lang-reg" name="language" value="regional">
+                                    <label for="lang-reg">Regional Vernacular</label>
+                                    <br><br>
+
+                                    <label>Alert Channels to Receive:</label><br>
+                                    <input type="checkbox" id="alert-sms" name="alerts[]" value="sms" checked>
+                                    <label for="alert-sms">SMS Notifications</label><br>
+
+                                    <input type="checkbox" id="alert-email" name="alerts[]" value="email" checked>
+                                    <label for="alert-email">Email Advisory Bulletins</label><br>
+
+                                    <input type="checkbox" id="alert-whatsapp" name="alerts[]" value="whatsapp">
+                                    <label for="alert-whatsapp">WhatsApp Urgent Warning Broadcasts</label><br>
+
+                                    <input type="checkbox" id="alert-ivr" name="alerts[]" value="ivrs">
+                                    <label for="alert-ivr">Automated Voice Emergency Calls</label>
+                                    <br><br>
+                                </fieldset>
+
+                                <br>
+
+                                <table width="100%" border="0">
+                                    <tr>
+                                        <td align="center">
+                                            <input type="submit" value="Subscribe to Alerts" style="padding: 8px 16px; cursor: pointer;">
+                                            &nbsp;&nbsp;
+                                            <input type="reset" value="Reset Form" style="padding: 8px 16px; cursor: pointer;">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </form>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <hr color="brown" size="1">
+
+    <p align="center">
+        <small><i>Heatwave Intelligence System Citizen Portal</i></small>
+    </p>
+
+</body>
+</html>
