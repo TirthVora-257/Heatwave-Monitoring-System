@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climate Intelligence - Object-Based Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 30px;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .info-card {
+            background: #f8f9fa;
+            border-left: 4px solid #e67e22;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 8px 0;
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Climate Monitoring Object System</h2>
+    <div id="output" class="info-card"></div>
+</div>
+
+<script>
+    // Create the climate monitoring object using Object Literal Syntax
+    let climateData = {
+        // Properties
+        locationName: "Santacruz Observatory",
+        city: "Mumbai",
+        temperature: 39,
+        humidity: 65,
+        windSpeed: 12,
+        forecastTemperature: 41,
+        riskLevel: "Pending",
+        alertStatus: "Active",
+        monitoringDate: "2026-10-09",
+        thresholdTemp: 38,
+
+        // Method 1: Display complete climate information
+        displayData: function() {
+            console.log("=== Climate Report ===");
+            console.log("Location: " + this.locationName + ", " + this.city);
+            console.log("Temperature: " + this.temperature + "°C");
+            console.log("Humidity: " + this.humidity + "%");
+            console.log("Wind Speed: " + this.windSpeed + " km/h");
+            console.log("Forecast Temp: " + this.forecastTemperature + "°C");
+            console.log("Date: " + this.monitoringDate);
+        },
+
+        // Method 2: Calculate temperature difference from threshold
+        getTempDifference: function() {
+            return this.temperature - this.thresholdTemp;
+        },
+
+        // Method 3: Determine heatwave risk level based on conditions
+        determineRiskLevel: function() {
+            if (this.temperature >= 40) {
+                this.riskLevel = "Severe";
+            } else if (this.temperature >= 38 && this.humidity >= 60) {
+                this.riskLevel = "High";
+            } else if (this.temperature >= 35) {
+                this.riskLevel = "Moderate";
+            } else {
+                this.riskLevel = "Normal";
+            }
+            return this.riskLevel;
+        },
+
+        // Method 4: Display early-warning status based on forecast
+        getEarlyWarningStatus: function() {
+            if (this.forecastTemperature >= 40) {
+                return "CRITICAL WARNING: High forecast temperature ahead! Prepare heat safety measures.";
+            } else {
+                return "STABLE: Normal forecast expected.";
+            }
+        },
+
+        // Method 5: Update the alert status
+        updateAlertStatus: function(newStatus) {
+            this.alertStatus = newStatus;
+            console.log("Alert status updated to: " + this.alertStatus);
+        }
+    };
+
+    // Execute object methods
+    climateData.determineRiskLevel();
+    climateData.displayData();
+
+    // Access properties using dot operator and render output to the webpage
+    let outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = `
+        <p><strong>Location:</strong> ${climateData.locationName} (${climateData.city})</p>
+        <p><strong>Date:</strong> ${climateData.monitoringDate}</p>
+        <p><strong>Temperature:</strong> ${climateData.temperature}°C (Threshold: ${climateData.thresholdTemp}°C)</p>
+        <p><strong>Temp Difference:</strong> +${climateData.getTempDifference()}°C above threshold</p>
+        <p><strong>Humidity:</strong> ${climateData.humidity}%</p>
+        <p><strong>Wind Speed:</strong> ${climateData.windSpeed} km/h</p>
+        <p><strong>Forecast Temp:</strong> ${climateData.forecastTemperature}°C</p>
+        <p><strong>Calculated Risk Level:</strong> <span class="highlight">${climateData.riskLevel}</span></p>
+        <p><strong>Alert Status:</strong> ${climateData.alertStatus}</p>
+        <hr>
+        <p><strong>Early Warning Status:</strong><br>${climateData.getEarlyWarningStatus()}</p>
+    `;
+
+    // Demonstrate Method 5 (Update Alert Status)
+    climateData.updateAlertStatus("High Alert Issued");
+</script>
+
+</body>
+</html>

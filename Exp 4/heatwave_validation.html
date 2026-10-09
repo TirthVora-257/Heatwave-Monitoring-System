@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climate Intelligence - Heatwave Monitoring & Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        fieldset {
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #34495e;
+            padding: 0 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .error-msg {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        .success-box {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Climate Intelligence Platform</h2>
+    <p class="subtitle">Heatwave Monitoring, Prediction, and Early Warning</p>
+
+    <!-- Success Message Container (Task 5) -->
+    <div id="successBox" class="success-box">
+        Observation record successfully validated and logged!
+    </div>
+
+    <form id="heatwaveForm" novalidate>
+        <!-- Task 1 & 2: Stakeholder & Station Details -->
+        <fieldset>
+            <legend>Stakeholder & Station Details</legend>
+            
+            <div class="form-group">
+                <label for="observerName">Observer Name *</label>
+                <input type="text" id="observerName" name="observerName" placeholder="e.g. Ramesh Kumar">
+                <div class="error-msg" id="nameError">Observer Name must contain only letters and spaces (min 3 characters).</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="observer@weather.org">
+                <div class="error-msg" id="emailError">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number *</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="10-digit Indian mobile number">
+                <div class="error-msg" id="mobileError">Please enter a valid 10-digit Indian mobile number (starts with 6-9).</div>
+            </div>
+
+            <div class="form-group">
+                <label for="stationId">AWS Station ID *</label>
+                <input type="text" id="stationId" name="stationId" placeholder="e.g. AWS001">
+                <div class="error-msg" id="stationError">Station ID must follow format like AWS001 (AWS followed by 3 digits).</div>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location *</label>
+                <input type="text" id="location" name="location" placeholder="City / District">
+                <div class="error-msg" id="locationError">Location cannot be empty.</div>
+            </div>
+        </fieldset>
+
+        <!-- Task 1 & 4: Weather Observation Data -->
+        <fieldset>
+            <legend>Weather Observation Data</legend>
+
+            <div class="form-group">
+                <label for="obsDate">Observation Date *</label>
+                <input type="date" id="obsDate" name="obsDate">
+                <div class="error-msg" id="dateError">Please select a valid observation date.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="temp">Maximum Temperature (°C) *</label>
+                <input type="number" step="0.1" id="temp" name="temp" placeholder="e.g. 42.5">
+                <div class="error-msg" id="tempError">Please enter a valid temperature value (e.g., -10 to 60 °C).</div>
+            </div>
+
+            <div class="form-group">
+                <label for="humidity">Humidity (%) *</label>
+                <input type="number" id="humidity" name="humidity" placeholder="0 to 100">
+                <div class="error-msg" id="humidityError">Humidity must be a number between 0 and 100 percent.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="alertLevel">Heatwave Alert Level *</label>
+                <select id="alertLevel" name="alertLevel">
+                    <option value="">-- Select Alert Level --</option>
+                    <option value="Normal">Normal (Green)</option>
+                    <option value="Heatwave Alert">Heatwave Alert (Yellow)</option>
+                    <option value="Severe Heatwave">Severe Heatwave Alert (Orange)</option>
+                    <option value="Extreme Heatwave">Extreme Emergency (Red)</option>
+                </select>
+                <div class="error-msg" id="alertError">Please select a heatwave alert level.</div>
+            </div>
+        </fieldset>
+
+        <button type="submit">Submit Monitoring Data</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('heatwaveForm').addEventListener('submit', function(event) {
+        // Task 5: Prevent default form submission
+        event.preventDefault();
+
+        // Track validation status
+        let isValid = true;
+
+        // Reset display state
+        document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+        document.getElementById('successBox').style.display = 'none';
+
+        // Read input values
+        const name = document.getElementById('observerName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const stationId = document.getElementById('stationId').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const obsDate = document.getElementById('obsDate').value;
+        const temp = document.getElementById('temp').value;
+        const humidity = document.getElementById('humidity').value;
+        const alertLevel = document.getElementById('alertLevel').value;
+
+        // --- TASK 2: Validate User Name and Station ID ---
+        const nameRegex = /^[A-Za-z\s]{3,}$/;
+        if (!nameRegex.test(name)) {
+            showError('nameError');
+            isValid = false;
+        }
+
+        const stationRegex = /^AWS\d{3}$/i; // e.g., AWS001
+        if (!stationRegex.test(stationId)) {
+            showError('stationError');
+            isValid = false;
+        }
+
+        if (location === "") {
+            showError('locationError');
+            isValid = false;
+        }
+
+        // --- TASK 3: Validate Email and Mobile Number ---
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showError('emailError');
+            isValid = false;
+        }
+
+        const mobileRegex = /^[6-9]\d{9}$/; // 10-digit Indian Mobile Number
+        if (!mobileRegex.test(mobile)) {
+            showError('mobileError');
+            isValid = false;
+        }
+
+        // --- TASK 4: Validate Weather Observation Data ---
+        if (obsDate === "") {
+            showError('dateError');
+            isValid = false;
+        }
+
+        if (temp === "" || isNaN(temp) || temp < -10 || temp > 60) {
+            showError('tempError');
+            isValid = false;
+        }
+
+        if (humidity === "" || isNaN(humidity) || humidity < 0 || humidity > 100) {
+            showError('humidityError');
+            isValid = false;
+        }
+
+        // --- TASK 5: Validate Alert Level and Submit Form ---
+        if (alertLevel === "") {
+            showError('alertError');
+            isValid = false;
+        }
+
+        if (isValid) {
+            document.getElementById('successBox').style.display = 'block';
+            document.getElementById('heatwaveForm').reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    // Helper function to display error messages
+    function showError(elementId) {
+        document.getElementById(elementId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

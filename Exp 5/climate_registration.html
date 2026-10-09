@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climate Intelligence - Registration & Early Warning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 20px;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        fieldset {
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #34495e;
+            padding: 0 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        /* Highlight invalid fields */
+        input.invalid, select.invalid {
+            border-color: #e74c3c;
+            background-color: #fdf2f2;
+        }
+        .error-msg {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        .success-box {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        button {
+            width: 100%;
+            padding: 11px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Climate Intelligence Platform</h2>
+    <p class="subtitle">Heatwave Monitoring, Prediction, and Early Warning System</p>
+
+    <!-- Success Message Box -->
+    <div id="successBox" class="success-box">
+        <h3>Registration Successful!</h3>
+        <p>You are registered for Climate Intelligence<br>Heatwave Monitoring and Early-Warning Alerts.</p>
+    </div>
+
+    <form id="registrationForm" novalidate>
+        <!-- User Personal Details -->
+        <fieldset>
+            <legend>User Details</legend>
+
+            <div class="form-group">
+                <label for="userName">User Name *</label>
+                <input type="text" id="userName" name="userName" placeholder="e.g. Rahul Sharma">
+                <div class="error-msg" id="nameError">User name must contain only alphabets and spaces.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number *</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="e.g. 9876543210">
+                <div class="error-msg" id="mobileError">Mobile number must contain exactly 10 digits.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="e.g. rahul@gmail.com">
+                <div class="error-msg" id="emailError">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="userId">Climate User ID *</label>
+                <input type="text" id="userId" name="userId" placeholder="e.g. CLM-1234">
+                <div class="error-msg" id="userIdError">User ID must follow pattern CLM-1234 (CLM- followed by 4 digits).</div>
+            </div>
+        </fieldset>
+
+        <!-- Location & Category -->
+        <fieldset>
+            <legend>Location & Profile</legend>
+
+            <div class="form-group">
+                <label for="location">Location / City *</label>
+                <input type="text" id="location" name="location" placeholder="e.g. Mumbai">
+                <div class="error-msg" id="locationError">Location/City cannot be empty.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="pinCode">PIN / Postal Code *</label>
+                <input type="text" id="pinCode" name="pinCode" placeholder="e.g. 400077">
+                <div class="error-msg" id="pinError">PIN/Postal Code must contain exactly 6 digits.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="ageGroup">Age Group *</label>
+                <select id="ageGroup" name="ageGroup">
+                    <option value="">-- Select Age Group --</option>
+                    <option value="Under 18">Under 18</option>
+                    <option value="18-35">18 - 35</option>
+                    <option value="36-60">36 - 60</option>
+                    <option value="Above 60">Above 60</option>
+                </select>
+                <div class="error-msg" id="ageError">Please select an age group.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="userCategory">User Category *</label>
+                <select id="userCategory" name="userCategory">
+                    <option value="">-- Select User Category --</option>
+                    <option value="General Public">General Public</option>
+                    <option value="Senior Citizen">Senior Citizen</option>
+                    <option value="Student">Student</option>
+                    <option value="Outdoor Worker">Outdoor Worker</option>
+                    <option value="Healthcare Worker">Healthcare Worker</option>
+                    <option value="Government/Disaster Management">Government/Disaster Management</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-msg" id="categoryError">Please select a user category.</div>
+            </div>
+        </fieldset>
+
+        <!-- Alert Preferences & Date -->
+        <fieldset>
+            <legend>Alert Preferences</legend>
+
+            <div class="form-group">
+                <label for="alertChannel">Preferred Alert Channel *</label>
+                <select id="alertChannel" name="alertChannel">
+                    <option value="">-- Select Preferred Channel --</option>
+                    <option value="SMS">SMS</option>
+                    <option value="Email">Email</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Voice Call">Voice Call</option>
+                </select>
+                <div class="error-msg" id="channelError">Please select a preferred alert channel.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="regDate">Registration Date *</label>
+                <input type="date" id="regDate" name="regDate">
+                <div class="error-msg" id="dateError">Registration date cannot be empty or a future date.</div>
+            </div>
+        </fieldset>
+
+        <button type="submit">Register for Early Warning</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        // Prevent default form submission
+        event.preventDefault();
+
+        let isValid = true;
+
+        // Clear all previous errors and input highlight states
+        document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('input, select').forEach(el => el.classList.remove('invalid'));
+        document.getElementById('successBox').style.display = 'none';
+
+        // Get Input Elements and Trimmed Values
+        const userName = document.getElementById('userName');
+        const mobile = document.getElementById('mobile');
+        const email = document.getElementById('email');
+        const userId = document.getElementById('userId');
+        const location = document.getElementById('location');
+        const pinCode = document.getElementById('pinCode');
+        const ageGroup = document.getElementById('ageGroup');
+        const userCategory = document.getElementById('userCategory');
+        const alertChannel = document.getElementById('alertChannel');
+        const regDate = document.getElementById('regDate');
+
+        // Regex Patterns
+        const nameRegex = /^[A-Za-z ]+$/;
+        const mobileRegex = /^[0-9]{10}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const userIdRegex = /^CLM-[0-9]{4}$/;
+        const pinRegex = /^[0-9]{6}$/;
+
+        // 1. Validate User Name
+        if (userName.value.trim() === "" || !nameRegex.test(userName.value.trim())) {
+            showError(userName, 'nameError');
+            isValid = false;
+        }
+
+        // 2. Validate Mobile Number (Exactly 10 digits)
+        if (!mobileRegex.test(mobile.value.trim())) {
+            showError(mobile, 'mobileError');
+            isValid = false;
+        }
+
+        // 3. Validate Email Address
+        if (!emailRegex.test(email.value.trim())) {
+            showError(email, 'emailError');
+            isValid = false;
+        }
+
+        // 4. Validate User ID (CLM-1234)
+        if (!userIdRegex.test(userId.value.trim())) {
+            showError(userId, 'userIdError');
+            isValid = false;
+        }
+
+        // 5. Validate Location/City
+        if (location.value.trim() === "") {
+            showError(location, 'locationError');
+            isValid = false;
+        }
+
+        // 6. Validate PIN Code (Exactly 6 digits)
+        if (!pinRegex.test(pinCode.value.trim())) {
+            showError(pinCode, 'pinError');
+            isValid = false;
+        }
+
+        // 7. Validate Age Group Selection
+        if (ageGroup.value === "") {
+            showError(ageGroup, 'ageError');
+            isValid = false;
+        }
+
+        // 8. Validate User Category Selection
+        if (userCategory.value === "") {
+            showError(userCategory, 'categoryError');
+            isValid = false;
+        }
+
+        // 9. Validate Preferred Alert Channel Selection
+        if (alertChannel.value === "") {
+            showError(alertChannel, 'channelError');
+            isValid = false;
+        }
+
+        // 10. Validate Registration Date (Not empty & not a future date)
+        if (regDate.value === "") {
+            showError(regDate, 'dateError');
+            isValid = false;
+        } else {
+            const selectedDate = new Date(regDate.value);
+            const today = new Date();
+            // Set time component of today to midnight for fair date comparison
+            today.setHours(0, 0, 0, 0);
+
+            if (selectedDate > today) {
+                showError(regDate, 'dateError');
+                isValid = false;
+            }
+        }
+
+        // 11. Display Success Message if all validation rules pass
+        if (isValid) {
+            document.getElementById('successBox').style.display = 'block';
+            document.getElementById('registrationForm').reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    // Helper function to flag input field and display corresponding error message
+    function showError(inputElement, errorElementId) {
+        inputElement.classList.add('invalid');
+        document.getElementById(errorElementId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

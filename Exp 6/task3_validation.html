@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate Email and Mobile Number</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .layout-container {
+            display: flex;
+            width: 90%;
+            margin: 20px auto;
+            gap: 20px;
+        }
+
+        .form-card {
+            background-color: #E3EFE6;
+            border: 2px solid brown;
+            border-radius: 8px;
+            padding: 25px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        fieldset {
+            border: 2px solid brown;
+            border-radius: 6px;
+            background-color: #D5EAD8;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: brown;
+            background-color: #E3EFE6;
+            border: 1px solid brown;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        input {
+            width: 100%;
+            padding: 9px;
+            box-sizing: border-box;
+            border: 1px solid brown;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        input.invalid {
+            border-color: #d32f2f;
+            background-color: #fdedec;
+        }
+
+        .error-msg {
+            color: #b71c1c;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-box {
+            display: none;
+            background-color: #d5ead8;
+            border: 2px solid brown;
+            color: brown;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background-color: brown;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Heatwave Intelligence System</h1>
+        <p>Real-Time Heatwave Monitoring &amp; Early Warning System</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about-systems.html">About</a> | 
+        <a href="alert-details.html">Severe Warning</a> | 
+        <a href="hotspot-map.html">Hotspot Map</a> | 
+        <a href="sources.html">Data &amp; Roles</a> | 
+        <a href="forecast.html">Forecast</a> | 
+        <a href="media.html">Media &amp; Awareness</a> |
+        <a href="subscribe.html">Subscribe</a> | 
+        <a href="heatwave-form.html">Heatwave Form</a> |
+        <a href="navigation.html">Directory</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="layout-container">
+        <main class="form-card">
+            <h2>Contact Details Validation</h2>
+            <p style="margin-bottom: 20px; font-size: 14px;">
+                Enter contact details below to validate email and mobile formats.
+            </p>
+
+            <div id="successBox" class="success-box">
+                Validation Successful! Email and Mobile Number are valid.
+            </div>
+
+            <form id="task3Form" novalidate>
+                <fieldset>
+                    <legend>Contact Validation Details</legend>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="e.g. observer@weather.org">
+                        <div class="error-msg" id="emailError">Please enter a valid email address (e.g., user@domain.com).</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number *</label>
+                        <input type="tel" id="mobile" placeholder="e.g. 9876543210">
+                        <div class="error-msg" id="mobileError">Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.</div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="submit-btn">Validate Fields</button>
+            </form>
+        </main>
+    </div>
+
+    <hr color="brown" size="1">
+
+    <!-- Common Footer -->
+    <footer>
+        Heatwave Intelligence System | Summer 2026
+    </footer>
+
+    <script>
+        document.getElementById('task3Form').addEventListener('submit', function(event) {
+            // Prevent default page submit
+            event.preventDefault();
+
+            let isValid = true;
+
+            // Reset field states and messages
+            document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('input').forEach(el => el.classList.remove('invalid'));
+            document.getElementById('successBox').style.display = 'none';
+
+            // Get cleaned input values
+            const email = document.getElementById('email').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+
+            // 1. Email Regular Expression Validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('email', 'emailError');
+                isValid = false;
+            }
+
+            // 2. 10-digit Indian Mobile Number Regular Expression Validation (Starts with 6-9)
+            const mobileRegex = /^[6-9]\d{9}$/;
+            if (!mobileRegex.test(mobile)) {
+                showError('mobile', 'mobileError');
+                isValid = false;
+            }
+
+            // Display Success Box if inputs are valid
+            if (isValid) {
+                document.getElementById('successBox').style.display = 'block';
+            }
+        });
+
+        // Helper function to show field error and red outline
+        function showError(inputId, errorId) {
+            document.getElementById(inputId).classList.add('invalid');
+            document.getElementById(errorId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

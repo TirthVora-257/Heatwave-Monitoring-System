@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climate Intelligence - Temperature Array Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 30px;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .analysis-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 8px 0;
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Heatwave Array Analysis</h2>
+    <div id="output" class="analysis-box"></div>
+</div>
+
+<script>
+    // Temperature readings array
+    let temperatureReadings = [34, 36, 38, 39, 41, 40, 37, 35, 39, 42];
+    let heatwaveThreshold = 38; // Threshold set to 38°C
+
+    // 1. Minimum Temperature
+    let minTemp = Math.min(...temperatureReadings);
+
+    // 2. Maximum Temperature
+    let maxTemp = Math.max(...temperatureReadings);
+
+    // 3. Average Temperature
+    let sum = 0;
+    for (let i = 0; i < temperatureReadings.length; i++) {
+        sum += temperatureReadings[i];
+    }
+    let avgTemp = (sum / temperatureReadings.length).toFixed(1);
+
+    // 4. Count readings above threshold (> 38°C) & high heat conditions (>= 40°C)
+    let countAboveThreshold = 0;
+    let countFortyOrAbove = 0;
+    let highHeatReadings = [];
+
+    for (let i = 0; i < temperatureReadings.length; i++) {
+        let temp = temperatureReadings[i];
+
+        if (temp > heatwaveThreshold) {
+            countAboveThreshold++;
+        }
+
+        if (temp >= 40) {
+            countFortyOrAbove++;
+            highHeatReadings.push(temp);
+        }
+    }
+
+    // Display results on Webpage
+    let outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = `
+        <p><strong>Temperature Readings:</strong><br>${temperatureReadings.join("  ")} °C</p>
+        <hr>
+        <p><strong>Minimum Temperature:</strong> ${minTemp}°C</p>
+        <p><strong>Maximum Temperature:</strong> ${maxTemp}°C</p>
+        <p><strong>Average Temperature:</strong> ${avgTemp}°C</p>
+        <p><strong>Readings Above Threshold (> ${heatwaveThreshold}°C):</strong> ${countAboveThreshold}</p>
+        <p><strong>Readings ≥ 40°C:</strong> ${countFortyOrAbove}</p>
+        <p><strong>High Heat Condition Readings (≥ 40°C):</strong> <span class="highlight">${highHeatReadings.join(", ")} °C</span></p>
+    `;
+
+    // Console Output
+    console.log("Temperature Readings:", temperatureReadings.join(" "));
+    console.log("Minimum Temperature:", minTemp + "°C");
+    console.log("Maximum Temperature:", maxTemp + "°C");
+    console.log("Average Temperature:", avgTemp + "°C");
+    console.log("Readings >= 40°C:", countFortyOrAbove);
+    console.log("Heatwave Condition Readings:", highHeatReadings.join(", "));
+</script>
+
+</body>
+</html>

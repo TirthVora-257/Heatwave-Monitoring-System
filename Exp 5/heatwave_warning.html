@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heatwave Risk & Early Warning Decision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 30px;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+        .result-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 6px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Heatwave Early-Warning System</h2>
+    
+    <div id="output"></div>
+</div>
+
+<script>
+    // 1. Accept climate values using JavaScript variables
+    let locationName = "Pune";
+    let currentTemp = 39;                // in °C
+    let humidity = 65;                   // in %
+    let forecastTemp = 41;               // in °C
+    let vulnerableAlertRequired = true;  // Boolean flag
+
+    // Decision variables
+    let riskLevel = "";
+    let recommendation = "";
+    let earlyWarningMessage = "";
+
+    // 2. Decision Rules using if, else-if, relational, and logical operators
+    if (currentTemp >= 40) {
+        riskLevel = "SEVERE";
+        recommendation = "Severe Heatwave Warning - Stay Indoors";
+    } 
+    else if (currentTemp >= 38 && humidity >= 60) {
+        riskLevel = "HIGH";
+        recommendation = "High Heat Risk - Issue Warning";
+    } 
+    else if (currentTemp >= 35 && currentTemp < 38) {
+        riskLevel = "MODERATE";
+        recommendation = "Moderate Heat Risk - Monitor Conditions";
+    } 
+    else if (forecastTemp >= 40) {
+        riskLevel = "EARLY WARNING";
+        recommendation = "Early Warning - Prepare for Heatwave";
+    } 
+    else {
+        riskLevel = "NORMAL";
+        recommendation = "Normal - Continue Monitoring";
+    }
+
+    // Check forecast conditions for additional early warning recommendation
+    if (forecastTemp >= 40 || vulnerableAlertRequired) {
+        earlyWarningMessage = "Action Required: Issue special advisories for vulnerable populations (children & elderly).";
+    } else {
+        earlyWarningMessage = "Action Required: Standard monitoring active.";
+    }
+
+    // 3. Display Output on Page
+    let outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = `
+        <div class="info-box">
+            <p><strong>Location:</strong> ${locationName}</p>
+            <p><strong>Current Temperature:</strong> ${currentTemp}°C</p>
+            <p><strong>Humidity:</strong> ${humidity}%</p>
+            <p><strong>Forecast Temperature:</strong> ${forecastTemp}°C</p>
+        </div>
+
+        <div class="result-box">
+            <p><strong>Risk Level:</strong> ${riskLevel}</p>
+            <p><strong>Recommendation:</strong> ${recommendation}</p>
+            <p><strong>Early Warning:</strong> ${earlyWarningMessage}</p>
+        </div>
+    `;
+
+    // Also output to Console and Alert
+    console.log("Location: " + locationName);
+    console.log("Risk Level: " + riskLevel);
+    console.log("Recommendation: " + recommendation);
+
+    alert("Location: " + locationName + "\nRisk Level: " + riskLevel + "\nRecommendation: " + recommendation);
+</script>
+
+</body>
+</html>

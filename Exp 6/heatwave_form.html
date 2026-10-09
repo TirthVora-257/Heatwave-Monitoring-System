@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heatwave Monitoring Form - Climate Intelligence</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Main Layout Container */
+        .layout-container {
+            display: flex;
+            width: 90%;
+            margin: 20px auto;
+            gap: 20px;
+        }
+
+        /* Form Card Styling matching theme */
+        .form-card {
+            background-color: #E3EFE6;
+            border: 2px solid brown;
+            border-radius: 8px;
+            padding: 25px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        fieldset {
+            border: 2px solid brown;
+            border-radius: 6px;
+            background-color: #D5EAD8;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: brown;
+            background-color: #E3EFE6;
+            border: 1px solid brown;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px;
+            box-sizing: border-box;
+            border: 1px solid brown;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: darkred;
+            box-shadow: 0 0 4px rgba(139, 0, 0, 0.5);
+        }
+
+        .submit-btn {
+            background-color: brown;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Heatwave Intelligence System</h1>
+        <p>Real-Time Heatwave Monitoring &amp; Early Warning System</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about-systems.html">About</a> | 
+        <a href="alert-details.html">Severe Warning</a> | 
+        <a href="hotspot-map.html">Hotspot Map</a> | 
+        <a href="sources.html">Data &amp; Roles</a> | 
+        <a href="forecast.html">Forecast</a> | 
+        <a href="media.html">Media &amp; Awareness</a> |
+        <a href="subscribe.html">Subscribe</a> | 
+        <a href="heatwave-form.html">Heatwave Form</a> |
+        <a href="navigation.html">Directory</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="layout-container">
+        <main class="form-card">
+            <h2>Heatwave Monitoring &amp; Stakeholder Data Form</h2>
+            <p style="margin-bottom: 20px; font-size: 14px;">
+                Please enter localized weather monitoring observations and station details below. Fields marked with <b>*</b> are mandatory.
+            </p>
+
+            <form id="heatwaveForm" action="#" method="post">
+                
+                <!-- Stakeholder Details Fieldset -->
+                <fieldset>
+                    <legend>Stakeholder &amp; Station Details</legend>
+
+                    <div class="form-group">
+                        <label for="observerName">Observer Name *</label>
+                        <input type="text" id="observerName" name="observerName" required placeholder="e.g. Ramesh Kumar">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="e.g. observer@weather.org">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number *</label>
+                        <input type="tel" id="mobile" name="mobile" required placeholder="10-digit mobile number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stationId">AWS Station ID *</label>
+                        <input type="text" id="stationId" name="stationId" required placeholder="e.g. AWS001">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location / District *</label>
+                        <input type="text" id="location" name="location" required placeholder="e.g. Santacruz, Mumbai">
+                    </div>
+                </fieldset>
+
+                <!-- Weather Observation Data Fieldset -->
+                <fieldset>
+                    <legend>Weather Observation Data</legend>
+
+                    <div class="form-group">
+                        <label for="obsDate">Observation Date *</label>
+                        <input type="date" id="obsDate" name="obsDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxTemp">Maximum Temperature (°C) *</label>
+                        <input type="number" step="0.1" id="maxTemp" name="maxTemp" required placeholder="e.g. 42.5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="humidity">Humidity (%) *</label>
+                        <input type="number" id="humidity" name="humidity" min="0" max="100" required placeholder="0 to 100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alertLevel">Heatwave Alert Level *</label>
+                        <select id="alertLevel" name="alertLevel" required>
+                            <option value="">-- Select Alert Level --</option>
+                            <option value="Normal">Normal (Green)</option>
+                            <option value="Heatwave Alert">Heatwave Alert (Yellow)</option>
+                            <option value="Severe Heatwave">Severe Heatwave Alert (Orange)</option>
+                            <option value="Extreme Heatwave">Extreme Emergency (Red)</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="submit-btn">Submit Monitoring Data</button>
+            </form>
+        </main>
+    </div>
+
+    <hr color="brown" size="1">
+
+    <!-- Common Footer -->
+    <footer>
+        Heatwave Intelligence System | Summer 2026
+    </footer>
+
+</body>
+</html>

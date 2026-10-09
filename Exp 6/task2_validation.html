@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate User Name and Station ID</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .layout-container {
+            display: flex;
+            width: 90%;
+            margin: 20px auto;
+            gap: 20px;
+        }
+
+        .form-card {
+            background-color: #E3EFE6;
+            border: 2px solid brown;
+            border-radius: 8px;
+            padding: 25px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        fieldset {
+            border: 2px solid brown;
+            border-radius: 6px;
+            background-color: #D5EAD8;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: brown;
+            background-color: #E3EFE6;
+            border: 1px solid brown;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        input {
+            width: 100%;
+            padding: 9px;
+            box-sizing: border-box;
+            border: 1px solid brown;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        input.invalid {
+            border-color: #d32f2f;
+            background-color: #fdedec;
+        }
+
+        .error-msg {
+            color: #b71c1c;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-box {
+            display: none;
+            background-color: #d5ead8;
+            border: 2px solid brown;
+            color: brown;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background-color: brown;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Heatwave Intelligence System</h1>
+        <p>Real-Time Heatwave Monitoring &amp; Early Warning System</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about-systems.html">About</a> | 
+        <a href="alert-details.html">Severe Warning</a> | 
+        <a href="hotspot-map.html">Hotspot Map</a> | 
+        <a href="sources.html">Data &amp; Roles</a> | 
+        <a href="forecast.html">Forecast</a> | 
+        <a href="media.html">Media &amp; Awareness</a> |
+        <a href="subscribe.html">Subscribe</a> | 
+        <a href="heatwave-form.html">Heatwave Form</a> |
+        <a href="navigation.html">Directory</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="layout-container">
+        <main class="form-card">
+            <h2>Observer Name &amp; Station ID Validation</h2>
+            <p style="margin-bottom: 20px; font-size: 14px;">
+                Enter observer and station credentials below to validate input formats.
+            </p>
+
+            <div id="successBox" class="success-box">
+                Validation Successful! Observer Name and Station ID are valid.
+            </div>
+
+            <form id="task2Form" novalidate>
+                <fieldset>
+                    <legend>Station Validation Details</legend>
+
+                    <div class="form-group">
+                        <label for="observerName">Observer Name *</label>
+                        <input type="text" id="observerName" placeholder="e.g. Ramesh Kumar">
+                        <div class="error-msg" id="nameError">Observer Name must contain alphabets and spaces only (at least 3 characters).</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stationId">AWS Station ID *</label>
+                        <input type="text" id="stationId" placeholder="e.g. AWS001">
+                        <div class="error-msg" id="stationError">AWS Station ID must follow the format AWS followed by 3 digits (e.g. AWS001).</div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="submit-btn">Validate Fields</button>
+            </form>
+        </main>
+    </div>
+
+    <hr color="brown" size="1">
+
+    <!-- Common Footer -->
+    <footer>
+        Heatwave Intelligence System | Summer 2026
+    </footer>
+
+    <script>
+        document.getElementById('task2Form').addEventListener('submit', function(event) {
+            // Prevent standard page submission
+            event.preventDefault();
+
+            let isValid = true;
+
+            // Clear former errors and styling
+            document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('input').forEach(el => el.classList.remove('invalid'));
+            document.getElementById('successBox').style.display = 'none';
+
+            // Retrieve values
+            const name = document.getElementById('observerName').value.trim();
+            const stationId = document.getElementById('stationId').value.trim();
+
+            // 1. Validate Observer Name: Alphabets and spaces only, min 3 characters
+            const nameRegex = /^[A-Za-z\s]{3,}$/;
+            if (!nameRegex.test(name)) {
+                showError('observerName', 'nameError');
+                isValid = false;
+            }
+
+            // 2. Validate AWS Station ID: Pattern format AWS001 (case-insensitive)
+            const stationRegex = /^AWS\d{3}$/i;
+            if (!stationRegex.test(stationId)) {
+                showError('stationId', 'stationError');
+                isValid = false;
+            }
+
+            // Success Output
+            if (isValid) {
+                document.getElementById('successBox').style.display = 'block';
+            }
+        });
+
+        // Helper function to show errors and mark inputs
+        function showError(inputId, errorId) {
+            document.getElementById(inputId).classList.add('invalid');
+            document.getElementById(errorId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
